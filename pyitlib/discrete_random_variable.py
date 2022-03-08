@@ -4686,7 +4686,7 @@ def _map_observations_to_integers(Symbol_matrices, Fill_values):
         # TODO make sure to test with various (unusual) data types
         Symbol_matrices = [L.transform(A.ravel()).reshape(A.shape) for A in
                            Symbol_matrices]
-        Fill_values = [L.transform(np.atleast_1d(f)) for f in Fill_values]
+        Fill_values = [L.fit_transform(np.atleast_1d(f)) for f in Fill_values]
 
         for A, f in zip(Symbol_matrices, Fill_values):
             assert(not np.any(A == FILL_VALUE))
